@@ -1,3 +1,4 @@
+/* downloaded star wars font for header */
 @font-face {
     font-family: "My Custom Font";
     src: url(starjedi/Starjedi.ttf) format("truetype");
@@ -10,7 +11,7 @@ header {
     color: white;
     margin-top: 10px;
 }
-
+/* used devtool in chrome to make background cover body and adust accordingly */
 body {
     background-attachment: inherit;
     background-image: url(../images/star-wars-bckgrd.jpg);
