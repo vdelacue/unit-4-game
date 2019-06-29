@@ -14,22 +14,22 @@
 </head>
 
 <body>
-    <header>
+    <header class="container">
         <h1>Star Wars RPG</h1>
         <p>Select a player to Start</p>
     </header>
-    <div class="container">
+    <div class="container" id="charCont">
         <!-- character selection row -->
         <div class="row">
-            <div class="col-md-12 character-selection">
-                <div id="player">
-
-                </div>
+            <div class="col-md-12 character-selection" id="characters">
+                <img src="assets/images/darth2.jpg">
+                <img src="assets/images/emperor2.jpg">
+                <img src="assets/images/yoda2.jpeg">
+                <img src="assets/images/princess2.jpg">
             </div>
-        </div>
-        <!-- selected character row -->
+        </div> <!-- selected player row -->
         <div class="row">
-            <div class="col-md-12 character-selection">
+            <div class="col-md-12 player-selected">
                 <div id="player">
 
                 </div>
@@ -37,7 +37,7 @@
         </div>
         <!-- enemy selection row -->
         <div class="row">
-            <div class="col-md-12 character-selection">
+            <div class="col-md-12 enemy-selection">
                 <div id="player">
 
                 </div>
@@ -45,7 +45,15 @@
         </div>
         <!-- defender -->
         <div class="row">
-            <div class="col-md-12 character-selection">
+            <div class="col-md-12 defender">
+                <div id="player">
+
+                </div>
+            </div>
+        </div>
+        <!-- controls and colsole -->
+        <div class="row">
+            <div class="col-md-12 control-console">
                 <div id="player">
 
                 </div>
@@ -53,7 +61,7 @@
         </div>
     </div>
 
-    <div id="player"></div>
+
 
 
     <footer>

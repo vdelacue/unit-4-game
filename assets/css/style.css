@@ -1,4 +1,23 @@
+header {
+    color: white;
+    margin-top: 10px;
+}
+
 body {
+    background-attachment: inherit;
     background-image: url(../images/star-wars-bckgrd.jpg);
-    background-size: 100%;
+    background-size: cover;
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
+    background-repeat: no-repeat;
+}
+
+img {
+    border: solid;
+    border-block-color: white;
+    
+}
+
+#charCont {
+    margin-left: 3px;
 }
