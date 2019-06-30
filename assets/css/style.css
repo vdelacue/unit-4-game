@@ -38,6 +38,10 @@ img {
     color: #12520F;
 
 }
+.playerSelected img {
+    /* border: solid; */
+    border-color: #12520F;
+}
 
 #enemies {
     color: #8D1013;
@@ -51,7 +55,7 @@ img {
     color: #8D1013;
 }
 
-#playerSelection {
+.playerSelection {
     /* to get images side by side tested in devtools and all of these worked: webkit-box, webkit-inline-box, contents, flex, inherit, inline-flex */
     display: inline-flex;
 
