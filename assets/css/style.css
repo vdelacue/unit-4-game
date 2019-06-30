@@ -8,11 +8,6 @@
     font-family: "My Custom Font", Verdana, Tahoma;
 }
 
-header {
-    color: white;
-    margin-top: 10px;
-}
-
 /* used devtool in chrome to make background cover body and adust accordingly */
 body {
     background-attachment: inherit;
@@ -24,14 +19,19 @@ body {
     color: #8199A0;
 }
 
+header {
+    color: white;
+    margin-top: 10px;
+}
+
+
+
 img {
     border: solid;
 }
 
 #charCont {
     margin-left: 3px;
-    margin-top: 0px;
-    margin-bottom: 0px;
 }
 
 #player {
@@ -44,17 +44,14 @@ img {
 }
 
 #action {
-    display: -webkit-inline-box; 
+    display: -webkit-inline-box;
 }
-
-
 
 #defender {
     color: #8D1013;
 }
 
-
-.characterSelection {
+#playerSelection {
     /* to get images side by side tested in devtools and all of these worked: webkit-box, webkit-inline-box, contents, flex, inherit, inline-flex */
     display: inline-flex;
 
@@ -65,7 +62,6 @@ figure {
     display: table;
     color: #8199A0;
     text-align: center;
-
 }
 
 figcaption .figCapName {
@@ -78,14 +74,18 @@ figcaption .figCapHealth {
     caption-side: bottom;
 }
 
-h4 {
-    margin-bottom: 0px;
+.defendersFought {
+    display: none;
 }
 
+/* h4 {
+    margin-bottom: 0px;
+} */
+
 @media (min-width: 768px) {
-.col-md-6 {
-    -ms-flex: 0 0 50%;
-    flex: 0 0 50%;
-    max-width: 100%;
-}
+    .col-md-6 {
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 100%;
+    }
 }

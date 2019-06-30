@@ -21,7 +21,7 @@
     <div class="container" id="charCont">
         <!-- character selection row -->
         <div class="row">
-            <div class="col-md-12 characterSelection" id="characters">
+            <div class="col-md-12 playerSelection">
                 <figure id="darth">
                     <figcaption class="figCapName">Darth Vadar</figcaption>
                     <img src="assets/images/darth2.jpg" alt="darth vadar image" title="Darth Vader">
@@ -43,10 +43,10 @@
                     <figcaption class="figCapHealth">Health: 000</figcaption>
                 </figure>
             </div>
-        </div> 
+        </div>
         <!-- selected players row -->
         <div class="row" id="action">
-            <div class="col-md-6 playerSelected" id="player">
+            <div class="col-md-6 playerSelection" id="player">
                 <h4>Your Character</h4>
                 <figure id="darth">
                     <figcaption class="figCapName">Darth Vadar</figcaption>
@@ -65,7 +65,7 @@
         </div>
         <!-- enemy selection row -->
         <div class="row">
-            <div class="col-md-12 enemySelection" id="enemies">
+            <div class="col-md-12 defenderSelection" id="enemies">
                 <div>
                     <h4>Enemies Available to Attack</h4>
                 </div>
@@ -78,23 +78,14 @@
                 <button type="button" class="btn btn-light btn-sm attack">Attack</button>
             </div>
         </div>
-        <!-- defender -->
-        <!-- <div class="row">
-            <div class="col-md-12" id="defender">
-                <h4>Defender</h4>
-                <figure id="emperor">
-                    <figcaption class="figCapName">Emperor</figcaption>
-                    <img src="assets/images/emperor2.jpg">
-                    <figcaption class="figCapHealth">Health: 000</figcaption>
-                </figure>
-            </div>
-        </div> -->
-        <!--and colsole -->
         <div class="row">
             <div class="col-md-12" id="playerConsole">
 
                 <p class="playerConsoleMessage">You attacked Darth Vadar</p>
+                <p class="playerConsoleMessage">You attacked Darth Vadar</p>
+                <p class="playerConsoleMessage">You attacked Darth Vadar</p>
             </div>
+            
         </div>
     </div>
 
@@ -103,7 +94,9 @@
 
 
     <footer>
-
+        <div class="defendersFought">
+            
+        </div>
     </footer>
 
     <script type="text/javascript" src="assets/javascript/game.js"></script>
