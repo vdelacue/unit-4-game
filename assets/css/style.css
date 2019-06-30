@@ -21,6 +21,7 @@ body {
     height: -webkit-fill-available;
     width: -webkit-fill-available;
     background-repeat: no-repeat;
+    color: #8199A0;
 }
 
 img {
@@ -29,6 +30,8 @@ img {
 
 #charCont {
     margin-left: 3px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 #player {
@@ -40,9 +43,20 @@ img {
     color: #8D1013;
 }
 
+#action {
+    display: -webkit-inline-box; 
+}
+
+
+
+#defender {
+    color: #8D1013;
+}
+
+
 .characterSelection {
     /* to get images side by side tested in devtools and all of these worked: webkit-box, webkit-inline-box, contents, flex, inherit, inline-flex */
-    display: inline-flex; 
+    display: inline-flex;
 
 }
 
@@ -51,7 +65,7 @@ figure {
     display: table;
     color: #8199A0;
     text-align: center;
-    
+
 }
 
 figcaption .figCapName {
@@ -62,4 +76,16 @@ figcaption .figCapName {
 figcaption .figCapHealth {
     display: table-caption;
     caption-side: bottom;
+}
+
+h4 {
+    margin-bottom: 0px;
+}
+
+@media (min-width: 768px) {
+.col-md-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 100%;
+}
 }
