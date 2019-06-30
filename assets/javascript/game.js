@@ -83,6 +83,7 @@ $(document).ready(function () {
     // and remove the selected defender into a non displayed class
     function initializeDefenderRow() {
         $(".playerSelection").removeClass("playerSelection").addClass("defenderSelection");
+        $("defenderSelection").appendTo("#enemies");
         $("#defender").appendTo(".defendersFought");
     };
 
@@ -99,6 +100,7 @@ $(document).ready(function () {
 $("#darth").on("click", function(){
     initializePlayer(players["Darth Vadar"]);
     $("#darth").appendTo("#player");
+    initializeDefender();
 });
 
 $("#emperor").on("click", function(){
