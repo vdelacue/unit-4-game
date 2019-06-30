@@ -3,7 +3,8 @@
     font-family: "My Custom Font";
     src: url(starjedi/Starjedi.ttf) format("truetype");
 }
-.customfont { 
+
+.customfont {
     font-family: "My Custom Font", Verdana, Tahoma;
 }
 
@@ -11,6 +12,7 @@ header {
     color: white;
     margin-top: 10px;
 }
+
 /* used devtool in chrome to make background cover body and adust accordingly */
 body {
     background-attachment: inherit;
@@ -23,10 +25,41 @@ body {
 
 img {
     border: solid;
-    border-block-color: white;
-    
 }
 
 #charCont {
     margin-left: 3px;
+}
+
+#player {
+    color: #12520F;
+
+}
+
+#enemies {
+    color: #8D1013;
+}
+
+.characterSelection {
+    /* to get images side by side tested in devtools and all of these worked: webkit-box, webkit-inline-box, contents, flex, inherit, inline-flex */
+    display: inline-flex; 
+
+}
+
+/* figure images and captions */
+figure {
+    display: table;
+    color: #8199A0;
+    text-align: center;
+    
+}
+
+figcaption .figCapName {
+    display: table-caption;
+    caption-side: top;
+}
+
+figcaption .figCapHealth {
+    display: table-caption;
+    caption-side: bottom;
 }

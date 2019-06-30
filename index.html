@@ -16,44 +16,65 @@
 <body>
     <header class="container">
         <h1 class="customfont">Star Wars RPG</h1>
-        <p class="customfont">Select a player to Start</p>
+        <p class="customfont">Clic on a player to Start</p>
     </header>
     <div class="container" id="charCont">
         <!-- character selection row -->
         <div class="row">
-            <div class="col-md-12 character-selection" id="characters">
-                <img src="assets/images/darth2.jpg">
-                <img src="assets/images/emperor2.jpg">
-                <img src="assets/images/yoda2.jpeg">
-                <img src="assets/images/princess2.jpg">
+            <div class="col-md-12 characterSelection" id="characters">
+                <figure id="darth">
+                    <figcaption class="figCapName">Darth Vadar</figcaption>
+                    <img src="assets/images/darth2.jpg" alt="darth vadar image" title="Darth Vader">
+                    <figcaption class="figCapHealth">Health: 000</figcaption>
+                </figure>
+                <figure id="emperor">
+                    <figcaption class="figCapName">Darth Vadar</figcaption>
+                    <img src="assets/images/emperor2.jpg">
+                    <figcaption class="figCapHealth">Health: 000</figcaption>
+                </figure>
+                <figure id="yoda">
+                    <figcaption class="figCapName">Darth Vadar</figcaption>
+                    <img src="assets/images/yoda2.jpeg">
+                    <figcaption class="figCapHealth">Health: 000</figcaption>
+                </figure>
+                <figure id="princess">
+                    <figcaption class="figCapName">Darth Vadar</figcaption>
+                    <img src="assets/images/princess2.jpg">
+                    <figcaption class="figCapHealth">Health: 000</figcaption>
+                </figure>
             </div>
         </div> <!-- selected player row -->
         <div class="row">
-            <div class="col-md-12 player-selected" id="player">
-
+            <div class="col-md-12 playerSelected" id="player">
+                <h1>Your Character</h1>
             </div>
         </div>
         <!-- enemy selection row -->
         <div class="row">
-            <div class="col-md-12 enemy-selection" id="enemies">
+            <div class="col-md-12 enemySelection" id="enemies">
                 <div>
-
+                    <h1>Enemies Available to Attack</h1>
                 </div>
+            </div>
+        </div>
+        <!-- Fight Section -->
+        <div class="row">
+            <div class="col-md-12" id="fightSection">
+                <h1>Fight Section</h1>
+                <button class="attack">Attack</button>
             </div>
         </div>
         <!-- defender -->
         <div class="row">
-            <div class="col-md-12 defender">
-                <div id="defender">
-
-                </div>
+            <div class="col-md-12" id="defender">
+                <h1>Defender</h1>
             </div>
         </div>
         <!-- controls and colsole -->
         <div class="row">
-            <div class="col-md-12 control-console" id="">
-                <button class="attack">Attack</button>
-                <p class="gamePlayMessage"></p>
+            <div class="col-md-12" id="playerConsole">
+
+                <p class="playerConsoleMessage"></p>
             </div>
         </div>
     </div>
