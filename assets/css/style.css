@@ -26,6 +26,7 @@ body {
     height: 100%;
     color: #8199A0;
     background-image: url(../images/star-wars-bckgrd.jpg);
+    height: 800px;
 }
 
 header {
@@ -132,4 +133,14 @@ figcaption .figCapHealth {
 
 #enemyH {
     color: #8D1013;
+}
+
+#coverWhiteSpace {
+    background-color: black;
+    height: 100%;
+    width: 100%; 
+}
+
+#playerConsole {
+    margin-top: 10px;
 }

@@ -97,6 +97,9 @@ $(document).ready(function () {
     };
     // function will take players not selected and move them into defender selection section 
     // and remove the selected defender into a non displayed class
+    function gameOverDisplay() {
+        
+    };
 
     function reset() {
         var playerSelected = false;
@@ -106,6 +109,8 @@ $(document).ready(function () {
         var defendersDefeated = 0;
         var gameOver = false;
     }
+
+
 
     // make a jQuery on click function for each of 4 players that determines if they are selected where all other players are moved
     //if no player/character has been selected this player/character will be 'your character' 
@@ -122,7 +127,7 @@ $(document).ready(function () {
         } else if (playerSelected === true && defenderSelected === false && player1.objectPlayer.name !== "Vadar") {
             defender = initializeDefender(players["Darth Vadar"]);
             $("#darth").appendTo("#defender");
-            $("#dHealth").text("Health: " + defender.objectPlayer.health_points);
+            $("#dHealth").text("Health: " + defender.objectDefender.health_points);
             defenderSelected = true;
 
         }
@@ -142,7 +147,7 @@ $(document).ready(function () {
         } else if (playerSelected === true && defenderSelected === false && player1.objectPlayer.name !== "Emperor") {
             defender = initializeDefender(players.Emperor);
             $("#emperor").appendTo("#defender");
-            $("#dHealth").text("Health: " + defender.objectPlayer.health_points);
+            $("#dHealth").text("Health: " + defender.objectDefender.health_points);
             defenderSelected = true;
         }
         console.log("this is defender" + defender.name);
@@ -162,7 +167,7 @@ $(document).ready(function () {
         } else if (playerSelected === true && defenderSelected === false && player1.objectPlayer.name !== "Yoda") {
             defender = initializeDefender(players.Yoda);
             $("#yoda").appendTo("#defender");
-            $("#dHealth").text("Health: " + defender.objectPlayer.health_points);
+            $("#dHealth").text("Health: " + defender.objectDefender.health_points);
 
             defenderSelected = true;
         }
@@ -183,7 +188,7 @@ $(document).ready(function () {
         } else if (playerSelected === true && defenderSelected === false && player1.objectPlayer.name !== "Princess") {
             defender = initializeDefender(players.Princess);
             $("#princess").appendTo("#defender");
-            $("#dHealth").text("Health: " + defender.objectPlayer.health_points);
+            $("#dHealth").text("Health: " + defender.objectDefender.health_points);
             defenderSelected = true;
         }
         console.log("this is defender" + defender.name);
@@ -191,17 +196,31 @@ $(document).ready(function () {
     });
 
     $(".attack").on("click", function () {
+        //created variable to target correct characters health caption, 
+        //since id's are unique to the first letter of the players name + health targeted that with these variables
         var phealth = player1.objectPlayer.name.charAt(0).toLowerCase() + "Health";
-        var dhealth = defender.objectPlayer.name.charAt(0).toLowerCase() + "Health";
+        var dhealth = defender.objectDefender.name.charAt(0).toLowerCase() + "Health";
         var newDHealth = 0;
         var newPHealth = 0;
+        var newCounterAttack = player1.objectPlayer.counter_attack_power;
         console.log($("#" + phealth));
         $("#" + phealth).text("Health: " + player1.objectPlayer.health_points);
-        $("#" + dhealth).text("Health: " + defender.objectPlayer.health_points);
+        $("#" + dhealth).text("Health: " + defender.objectDefender.health_points);
+        if (player1.objectPlayer.health_points > 0 && defender.objectDefender.health_points > 0) {
+            if (playerSelected && defenderSelected && !gameOver) {
+                defender.objectDefender.health_points = defender.objectDefender.health_points - player1.objectPlayer.counter_attack_power;
+                player1.objectPlayer.health_points = player1.objectPlayer.health_points - defender.objectDefender.counter_attack_power;
 
-        if (playerSelected === true && defenderSelected === true && !gameOver) {
-            newDHealth = defender.objectDefender.health_points - player1.objectPlayer.counter_attack_power;
-            newPHealth = player1.objectPlayer.health_points - defender.objectDefender.counter_attack_power;
+                // update Health Points for defender and player
+                $("#" + phealth).text("Health: " + player1.objectPlayer.health_points);
+                $("#" + dhealth).text("Health: " + defender.objectDefender.health_points);
+                // update player console with attack results
+                $("#playerConsole1").text("You attacked " + defender.objectDefender.name + " for " + player1.objectPlayer.counter_attack_power + " damage.");
+                $("#playerConsole2").text(defender.objectDefender.name + " attacked you back for " + defender.objectDefender.attack_power);
+                player1.objectPlayer.counter_attack_power += player1.objectPlayer.counter_attack_power;
+            }
+        } else if(player1.objectPlayer.health_points <= 0) {
+            gameOver = true;
 
         }
 
