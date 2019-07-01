@@ -70,7 +70,7 @@ $(document).ready(function () {
         player.health_points = playerSelected.health_points;
         player.attack_power = playerSelected.attack_power;
         player.counter_attack_power = playerSelected.counter_attack_power;
-        
+
     };
     // function will set the defender selected values
     function initializeDefender(defenderSelected) {
@@ -96,23 +96,38 @@ $(document).ready(function () {
         var gameOver = false;
     }
 
-// make a jQuery on click function for each of 4 players that determines if they are selected where all other players are moved
-$("#darth").on("click", function(){
-    initializePlayer(players["Darth Vadar"]);
-    $("#darth").appendTo("#player");
-    initializeDefender();
-});
+    // make a jQuery on click function for each of 4 players that determines if they are selected where all other players are moved
+    $("#darth").on("click", function () {
+        if (playerSelected === false) {
+            initializePlayer(players["Darth Vadar"]);
+            $("#darth").appendTo("#player");
+            $("#yoda").appendTo("#enemies");
+            $("#emperor").appendTo("#enemies");
+            $("#princess").appendTo("#enemies");
+            playerSelected === true;
+            initializeDefender();
+        }
+    });
 
-$("#emperor").on("click", function(){
-    initializePlayer(players.Emperor);
-});
+    $("#emperor").on("click", function () {
+        if (playerSelected === false) {
+            initializePlayer(players.Emperor);
+            $("#emperor").appendTo("#player");
+        }
+    });
 
-$("#yoda").on("click", function(){
-    initializePlayer(players.Yoda);
-});
+    $("#yoda").on("click", function () {
+        if (playerSelected === false) {
+            initializePlayer(players.Yoda);
+            $("#yoda").appendTo("#player");
+        }
+    });
 
-$("#princess").on("click", function(){
-    initializePlayer(players.Princess);
-});
+    $("#princess").on("click", function () {
+        if (playerSelected === false) {
+            initializePlayer(players.Princess);
+            $("#princess").appendTo("#player");
+        }
+    });
 
 });

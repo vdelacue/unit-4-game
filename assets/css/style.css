@@ -38,13 +38,23 @@ img {
     color: #12520F;
 
 }
+#player figcaption {
+    color: #12520F;
+    
+}
 .playerSelected img {
     /* border: solid; */
     border-color: #12520F;
 }
 
-#enemies {
+#enemies img {
     color: #8D1013;
+    display: inline-flex;
+    border-color: #8D1013;
+}
+#enemies figcaption {
+    color: #8D1013;
+    
 }
 
 #action {
@@ -61,6 +71,14 @@ img {
 
 }
 
+.defenderSelection {
+    /* to get images side by side tested in devtools and all of these worked: webkit-box, webkit-inline-box, contents, flex, inherit, inline-flex */
+    display: inline-flex;
+    color: #8D1013;
+    display: inline-flex;
+    border-color: #8D1013;
+
+}
 /* figure images and captions */
 figure {
     display: table;
@@ -82,9 +100,7 @@ figcaption .figCapHealth {
     display: none;
 }
 
-/* h4 {
-    margin-bottom: 0px;
-} */
+
 
 @media (min-width: 768px) {
     .col-md-6 {
