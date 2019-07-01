@@ -51,7 +51,7 @@ $(document).ready(function () {
     var defenderSelected = false;
 
     // Variable to store the user's chosen character
-    var player = {};
+    var player1 = {};
 
     // Variable to store the chosen enemy
     var defender = {};
@@ -62,30 +62,41 @@ $(document).ready(function () {
     // is the game over
     var gameOver = false;
 
+    // HTML variables
+
+
 
     //-----initializer functions------ 
     // function will set the player selected values
     function initializePlayer(playerSelected) {
-        player.name = playerSelected.name;
-        player.health_points = playerSelected.health_points;
-        player.attack_power = playerSelected.attack_power;
-        player.counter_attack_power = playerSelected.counter_attack_power;
-
+        console.log(playerSelected);
+        var newObject = {
+            "objectPlayer": {
+                name: playerSelected.name,
+                health_points: playerSelected.health_points,
+                attack_power: playerSelected.attack_power,
+                counter_attack_power: playerSelected.attack_power
+            }
+        };
+        console.log(newObject);
+        return newObject;
     };
     // function will set the defender selected values
     function initializeDefender(defenderSelected) {
-        defender.name = defender.name;
-        defender.health_points = defender.health_points;
-        defender.attack_power = defender.attack_power;
-        defender.counter_attack_power = defender.counter_attack_power;
+        console.log(defenderSelected);
+        var newObject = {
+            "objectDefender": {
+                name: defenderSelected.name,
+                health_points: defenderSelected.health_points,
+                attack_power: defenderSelected.attack_power,
+                counter_attack_power: defenderSelected.attack_power
+            }
+        };
+        console.log(newObject);
+        return newObject;
     };
     // function will take players not selected and move them into defender selection section 
     // and remove the selected defender into a non displayed class
-    function initializeDefenderRow() {
-        $(".playerSelection").removeClass("playerSelection").addClass("defenderSelection");
-        $("defenderSelection").appendTo("#enemies");
-        $("#defender").appendTo(".defendersFought");
-    };
 
     function reset() {
         var playerSelected = false;
@@ -97,37 +108,110 @@ $(document).ready(function () {
     }
 
     // make a jQuery on click function for each of 4 players that determines if they are selected where all other players are moved
+    //if no player/character has been selected this player/character will be 'your character' 
+    //then run initialize function to define player variables // move remaining characters to `enemies available`
     $("#darth").on("click", function () {
         if (playerSelected === false) {
-            initializePlayer(players["Darth Vadar"]);
+            player1 = initializePlayer(players["Darth Vadar"]);
+            $("#dHealth").text("Health: " + player1.objectPlayer.health_points);
             $("#darth").appendTo("#player");
             $("#yoda").appendTo("#enemies");
             $("#emperor").appendTo("#enemies");
             $("#princess").appendTo("#enemies");
-            playerSelected === true;
-            initializeDefender();
+            playerSelected = true;
+        } else if (playerSelected === true && defenderSelected === false && player1.objectPlayer.name !== "Vadar") {
+            defender = initializeDefender(players["Darth Vadar"]);
+            $("#darth").appendTo("#defender");
+            $("#dHealth").text("Health: " + defender.objectPlayer.health_points);
+            defenderSelected = true;
+
         }
+        console.log("this is defender" + defender);
+        console.log("this is player" + player1);
     });
 
     $("#emperor").on("click", function () {
         if (playerSelected === false) {
-            initializePlayer(players.Emperor);
+            player1 = initializePlayer(players.Emperor);
+            $("#eHealth").text("Health: " + player1.objectPlayer.health_points);
             $("#emperor").appendTo("#player");
+            $("#yoda").appendTo("#enemies");
+            $("#darth").appendTo("#enemies");
+            $("#princess").appendTo("#enemies");
+            playerSelected = true;
+        } else if (playerSelected === true && defenderSelected === false && player1.objectPlayer.name !== "Emperor") {
+            defender = initializeDefender(players.Emperor);
+            $("#emperor").appendTo("#defender");
+            $("#dHealth").text("Health: " + defender.objectPlayer.health_points);
+            defenderSelected = true;
         }
+        console.log("this is defender" + defender.name);
+        console.log("this is player" + player1.name);
     });
 
     $("#yoda").on("click", function () {
         if (playerSelected === false) {
-            initializePlayer(players.Yoda);
+            player1 = initializePlayer(players.Yoda);
+            $("#yHealth").text("Health: " + player1.objectPlayer.health_points);
             $("#yoda").appendTo("#player");
+            $("#darth").appendTo("#enemies");
+            $("#emperor").appendTo("#enemies");
+            $("#princess").appendTo("#enemies");
+            playerSelected = true;
+            initializeDefender();
+        } else if (playerSelected === true && defenderSelected === false && player1.objectPlayer.name !== "Yoda") {
+            defender = initializeDefender(players.Yoda);
+            $("#yoda").appendTo("#defender");
+            $("#dHealth").text("Health: " + defender.objectPlayer.health_points);
+
+            defenderSelected = true;
         }
+        console.log("this is defender" + defender.name);
+        console.log("this is player" + player1.name);
     });
 
     $("#princess").on("click", function () {
         if (playerSelected === false) {
-            initializePlayer(players.Princess);
+            player1 = initializePlayer(players.Princess);
+            $("#pHealth").text("Health: " + player1.objectPlayer.health_points);
             $("#princess").appendTo("#player");
+            $("#yoda").appendTo("#enemies");
+            $("#emperor").appendTo("#enemies");
+            $("#darth").appendTo("#enemies");
+            playerSelected = true;
+            initializeDefender();
+        } else if (playerSelected === true && defenderSelected === false && player1.objectPlayer.name !== "Princess") {
+            defender = initializeDefender(players.Princess);
+            $("#princess").appendTo("#defender");
+            $("#dHealth").text("Health: " + defender.objectPlayer.health_points);
+            defenderSelected = true;
         }
+        console.log("this is defender" + defender.name);
+        console.log("this is player" + player1.name);
     });
+
+    $(".attack").on("click", function () {
+        var phealth = player1.objectPlayer.name.charAt(0).toLowerCase() + "Health";
+        var dhealth = defender.objectPlayer.name.charAt(0).toLowerCase() + "Health";
+        var newDHealth = 0;
+        var newPHealth = 0;
+        console.log($("#" + phealth));
+        $("#" + phealth).text("Health: " + player1.objectPlayer.health_points);
+        $("#" + dhealth).text("Health: " + defender.objectPlayer.health_points);
+
+        if (playerSelected === true && defenderSelected === true && !gameOver) {
+            newDHealth = defender.objectDefender.health_points - player1.objectPlayer.counter_attack_power;
+            newPHealth = player1.objectPlayer.health_points - defender.objectDefender.counter_attack_power;
+
+        }
+
+
+
+
+
+    })
+
+
+
 
 });

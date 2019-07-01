@@ -9,22 +9,29 @@
 }
 
 /* used devtool in chrome to make background cover body and adust accordingly */
-body {
+/* body {
     background-attachment: inherit;
     background-image: url(../images/star-wars-bckgrd.jpg);
-    background-size: cover;
+    background-size: 130%;
     height: -webkit-fill-available;
     width: -webkit-fill-available;
     background-repeat: no-repeat;
     color: #8199A0;
+} */
+
+body {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    color: #8199A0;
+    background-image: url(../images/star-wars-bckgrd.jpg);
 }
 
 header {
     color: white;
     margin-top: 10px;
 }
-
-
 
 img {
     border: solid;
@@ -38,10 +45,12 @@ img {
     color: #12520F;
 
 }
+
 #player figcaption {
     color: #12520F;
-    
+
 }
+
 .playerSelected img {
     /* border: solid; */
     border-color: #12520F;
@@ -49,12 +58,12 @@ img {
 
 #enemies img {
     color: #8D1013;
-    display: inline-flex;
     border-color: #8D1013;
 }
+
 #enemies figcaption {
     color: #8D1013;
-    
+
 }
 
 #action {
@@ -63,7 +72,19 @@ img {
 
 #defender {
     color: #8D1013;
+    border-color: #8D1013;
 }
+
+#defender img {
+    color: #8D1013;
+    border-color: #8D1013;
+}
+
+#defender figcaption{
+    color: #8D1013;
+    border-color: #8D1013;
+}
+
 
 .playerSelection {
     /* to get images side by side tested in devtools and all of these worked: webkit-box, webkit-inline-box, contents, flex, inherit, inline-flex */
@@ -73,12 +94,13 @@ img {
 
 .defenderSelection {
     /* to get images side by side tested in devtools and all of these worked: webkit-box, webkit-inline-box, contents, flex, inherit, inline-flex */
-    display: inline-flex;
+
     color: #8D1013;
     display: inline-flex;
     border-color: #8D1013;
 
 }
+
 /* figure images and captions */
 figure {
     display: table;
@@ -100,12 +122,14 @@ figcaption .figCapHealth {
     display: none;
 }
 
-
-
 @media (min-width: 768px) {
     .col-md-6 {
         -ms-flex: 0 0 50%;
         flex: 0 0 50%;
         max-width: 100%;
     }
+}
+
+#enemyH {
+    color: #8D1013;
 }
