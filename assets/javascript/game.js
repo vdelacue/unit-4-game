@@ -127,9 +127,9 @@ $(document).ready(function () {
     function youWonDisplay() {
         $("#charCont").appendTo(".defendersFought");
         $("header").append('<img src="/Users/vanessa/Rutgers/HOMEWORK_ASSIGNMENTS/hw-4-jquery/unit-4-game/assets/images/you_won.gif">');
-        $("header").append('<p class="youWon">The force is stron with you!</p>');
+        $("header").append('<p class="youWon">The force is strong with you!</p>');
         $("header").append('<p class="youWon">You Won! Press Restart to play again!</p>');
-        $("header").append('<button class="btn-outline-success rounded gameOver" id="restartBTN">Restart</button>');
+        $("header").append('<button class="btn-outline-success rounded youWon" id="restartBTN">Restart</button>');
         $("#restartBTN").on("click", function () {
             location.reload();
         });

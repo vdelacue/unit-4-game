@@ -153,6 +153,12 @@ figcaption .figCapHealth {
 
 }
 
+.youWon {
+    font-size: 33px;
+    font-family: "My Custom Font", Verdana, Tahoma;
+    text-shadow: 2px 2px 3px green, 3px 3px 5px #8D1013;
+}
+
 footer {
     display: none;
 }
