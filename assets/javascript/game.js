@@ -111,7 +111,7 @@ $(document).ready(function () {
     // and remove the selected defender into a non displayed class
     function gameOverDisplay() {
         $("#charCont").appendTo(".defendersFought");
-        $("header").append('<img src="/Users/vanessa/Rutgers/HOMEWORK_ASSIGNMENTS/hw-4-jquery/unit-4-game/assets/images/game_over_samuel.gif">');
+        $("header").append('<img src="assets/images/game_over_samuel.gif">');
         $("header").append('<p class="gameOver">You have no more health points</p>');
         $("header").append('<p class="gameOver">Game 0ver! Press Restart to try again!</p>');
         $("header").append('<button class="btn-outline-success rounded gameOver" id="restartBTN">Restart</button>');
@@ -122,7 +122,7 @@ $(document).ready(function () {
 
     function youWonDisplay() {
         $("#charCont").appendTo(".defendersFought");
-        $("header").append('<img src="/Users/vanessa/Rutgers/HOMEWORK_ASSIGNMENTS/hw-4-jquery/unit-4-game/assets/images/you_won.gif">');
+        $("header").append('<img src="assets/images/you_won.gif">');
         $("header").append('<p class="youWon">The force is strong with you!</p>');
         $("header").append('<p class="youWon">You Won! Press Restart to play again!</p>');
         $("header").append('<button class="btn-outline-success rounded youWon" id="restartBTN">Restart</button>');
