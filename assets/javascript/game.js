@@ -6,7 +6,7 @@ $(document).ready(function () {
 
     var players = {
         "Darth Vadar": {
-            name: "Vadar",
+            name: "Darth",
             health_points: 100,
             attack_power: 5,
             counter_attack_power: 5,
@@ -52,17 +52,34 @@ $(document).ready(function () {
     // did player select the enemy
     var defenderSelected = false;
 
-    // Variable to store the user's chosen character
+    // variable to store the user's chosen character
     var player1 = {};
 
-    // Variable to store the chosen enemy
+    // variable to store the chosen enemy
     var defender = {};
 
-    // Number of enemies defeated
+    // number of enemies defeated
     var defendersDefeated = 0;
 
-    // is the game over
+    // boolean for is the game over
     var gameOver = false;
+//---------------sounds --------------//
+    // attack sound
+    var attMP3 = new Audio("/Users/vanessa/Rutgers/HOMEWORK_ASSIGNMENTS/hw-4-jquery/unit-4-game/assets/sounds/coolsaber.mp3");
+    attMP3.volume = 0.2;
+    // 
+   
+    var themeMP3 = document.getElementById("themeMusic").play();
+    themeMP3.volume = 0.2;
+    if(themeMP3 !== undefined) {
+        themeMP3.then(_=> {
+
+        }).catch(error=> {
+
+        });
+    }
+
+    themeMP3.volume = 0.2;
 
     // HTML variables
 
@@ -108,7 +125,7 @@ $(document).ready(function () {
         $("header").append('<p class="gameOver">You have no more health points</p>');
         $("header").append('<p class="gameOver">Game 0ver! Press Restart to try again!</p>');
         $("header").append('<button class="btn-outline-success rounded gameOver" id="restartBTN">Restart</button>');
-        $("#restartBTN").on("click", function() {
+        $("#restartBTN").on("click", function () {
             location.reload();
         });
     };
@@ -127,7 +144,7 @@ $(document).ready(function () {
     //if no player/character has been selected this player/character will be 'your character' 
     //then run initialize function to define player variables // move remaining characters to `enemies available`
     $("#darth").on("click", function () {
-        if(playerSelected === false) {
+        if (!playerSelected) {
             player1 = initializePlayer(players["Darth Vadar"]);
             $("#dHealth").text("Health: " + player1.objectPlayer.health_points);
             $("#darth").appendTo("#player");
@@ -135,19 +152,17 @@ $(document).ready(function () {
             $("#emperor").appendTo("#enemies");
             $("#princess").appendTo("#enemies");
             playerSelected = true;
-        } else if(playerSelected === true && defenderSelected === false && player1.objectPlayer.name !== "Vadar") {
+        } else if (playerSelected && !defenderSelected && player1.objectPlayer.name !== "Vadar") {
             defender = initializeDefender(players["Darth Vadar"]);
             $("#darth").appendTo("#defender");
             $("#dHealth").text("Health: " + defender.objectDefender.health_points);
             defenderSelected = true;
 
         }
-        console.log("this is defender" + defender);
-        console.log("this is player" + player1);
     });
 
     $("#emperor").on("click", function () {
-        if (playerSelected === false) {
+        if (!playerSelected) {
             player1 = initializePlayer(players.Emperor);
             $("#eHealth").text("Health: " + player1.objectPlayer.health_points);
             $("#emperor").appendTo("#player");
@@ -166,7 +181,7 @@ $(document).ready(function () {
     });
 
     $("#yoda").on("click", function () {
-        if (playerSelected === false) {
+        if (!playerSelected) {
             player1 = initializePlayer(players.Yoda);
             $("#yHealth").text("Health: " + player1.objectPlayer.health_points);
             $("#yoda").appendTo("#player");
@@ -182,12 +197,10 @@ $(document).ready(function () {
 
             defenderSelected = true;
         }
-        console.log("this is defender" + defender.name);
-        console.log("this is player" + player1.name);
     });
 
     $("#princess").on("click", function () {
-        if (playerSelected === false) {
+        if (!playerSelected) {
             player1 = initializePlayer(players.Princess);
             $("#pHealth").text("Health: " + player1.objectPlayer.health_points);
             $("#princess").appendTo("#player");
@@ -202,14 +215,13 @@ $(document).ready(function () {
             $("#dHealth").text("Health: " + defender.objectDefender.health_points);
             defenderSelected = true;
         }
-        console.log("this is defender" + defender.name);
-        console.log("this is player" + player1.name);
     });
 
 
     //-------------on click function and logic for attack button----------------------//
 
     $(".attack").on("click", function () {
+        attMP3.play();
         //created variable to target correct characters health caption, 
         //since id's are unique to the first letter of the players name + health targeted that with these variables
         var phealth = player1.objectPlayer.name.charAt(0).toLowerCase() + "Health";
@@ -217,9 +229,10 @@ $(document).ready(function () {
         var newDHealth = 0;
         var newPHealth = 0;
         var newCounterAttack = player1.objectPlayer.counter_attack_power;
-        console.log($("#" + phealth));
         $("#" + phealth).text("Health: " + player1.objectPlayer.health_points);
         $("#" + dhealth).text("Health: " + defender.objectDefender.health_points);
+
+        //conditions for players not defeated and results of attacks on healthpoints & counter attack power
         if (player1.objectPlayer.health_points > 0 && defender.objectDefender.health_points > 0) {
             if (playerSelected && defenderSelected && !gameOver) {
                 defender.objectDefender.health_points = defender.objectDefender.health_points - player1.objectPlayer.counter_attack_power;
@@ -232,25 +245,39 @@ $(document).ready(function () {
                 $("#playerConsole2").text(defender.objectDefender.name + " attacked you back for " + defender.objectDefender.attack_power);
                 player1.objectPlayer.counter_attack_power += player1.objectPlayer.counter_attack_power;
             }
-        } 
-        if(player1.objectPlayer.health_points <= 0) {
+        }
+        // condition for player defeated 
+        if (player1.objectPlayer.health_points <= 0) {
             gameOver = true;
             gameOverDisplay();
         }
-
-        if(defender.objectDefender.health_points <= 0) {
+        // condition for defender defeated
+        if (defender.objectDefender.health_points <= 0) {
+            defenderSelected = false
+            // update console
             $("#playerConsole1").text("You defeated " + defender.objectDefender.name);
-            $("#defender").appendTo("footer");
-            $("")
-            $("#playerConsole2").text("The Force is strong with you select another enemy!");
+            //loop through players object find matching object, update keys & values 
+            var dname = defender.objectDefender.name.toLowerCase();
+            Object.keys(players).forEach(function (item) {
+                console.log(players[item].name);
+                if (players[item].name === defender.objectDefender.name) {
+                    console.log("condition hit");
+                    //move this object back to enemies to attack 
+                    $("#" + dname).appendTo("footer");
+                    //add defeated attr and disable click
+                    
+                    // tell player to click on another defender
+                    $("#playerConsole2").text("The Force is strong with you select another enemy!");
+                }
+                
+            });
+           
         }
 
-    })
+        $("#restartBTN").on("click", function () {
+            location.reload();
+        });
 
 
-    $("#restartBTN").on("click", function() {
-        location.reload();
     });
-
-
 });

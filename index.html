@@ -12,6 +12,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
     <title>Star Wars RPG</title>
 </head>
+<audio controls id="themeMusic" autoplay> 
+    <source src="/Users/vanessa/Rutgers/HOMEWORK_ASSIGNMENTS/hw-4-jquery/unit-4-game/assets/sounds/theme.mp3"
+        type="audio/mp3">
+</audio>
 
 <body>
     <header class="container">
@@ -26,7 +30,7 @@
                     <figure>
                         <figcaption class="figCapName">Darth Vadar</figcaption>
                         <img src="assets/images/darth2.jpg" alt="darth vadar image" title="Darth Vader">
-                        <figcaption class="figCapHealth" id="vHealth">Health: 100</figcaption>
+                        <figcaption class="figCapHealth" id="dHealth">Health: 100</figcaption>
                     </figure>
                 </span>
                 <span id="emperor" class="allPlayers">
@@ -63,7 +67,7 @@
         </div>
         <!-- enemy selection row -->
         <div class="row">
-            <div class="col-md-12" >
+            <div class="col-md-12">
                 <h4 id="enemyH">Enemies Available to Attack</h4>
             </div>
         </div>
