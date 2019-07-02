@@ -1,11 +1,7 @@
-# unit-4-game
-### Option Two: Star Wars RPG Game (Challenge)
 
-![Star Wars](Images/2-StarWars.jpg)
+# Play the game by clicking on this link [Star Wars RPG](http://delacue.com/unit-4-game/) #
 
-1. [Watch the demo](https://youtu.be/klN2-ITjRt8).
-
-2. Here's how the app works:
+ Here's how the app works:
 
    * When the game starts, the player will choose a character by clicking on the fighter's picture. The player will fight as that character for the rest of the game.
 
@@ -43,8 +39,5 @@
 
 * Your players should be able to win and lose the game no matter what character they choose. The challenge should come from picking the right enemies, not choosing the strongest player.
 
-### Reminder: Submission on BCS
-
-* Please submit both the deployed Github.io link to your homework AND the link to the Github Repository!
 
 - - -
