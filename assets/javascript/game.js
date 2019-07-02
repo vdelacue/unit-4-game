@@ -10,7 +10,8 @@ $(document).ready(function () {
             health_points: 100,
             attack_power: 5,
             counter_attack_power: 5,
-            image: "/Users/vanessa/Rutgers/HOMEWORK_ASSIGNMENTS/hw-4-jquery/unit-4-game/assets/images/darth2.jpg"
+            image: "/Users/vanessa/Rutgers/HOMEWORK_ASSIGNMENTS/hw-4-jquery/unit-4-game/assets/images/darth2.jpg",
+            defeated: false
         },
 
         "Emperor": {
@@ -18,7 +19,8 @@ $(document).ready(function () {
             health_points: 120,
             attack_power: 8,
             counter_attack_power: 8,
-            image: "/Users/vanessa/Rutgers/HOMEWORK_ASSIGNMENTS/hw-4-jquery/unit-4-game/assets/images/emperor2.jpg"
+            image: "/Users/vanessa/Rutgers/HOMEWORK_ASSIGNMENTS/hw-4-jquery/unit-4-game/assets/images/emperor2.jpg",
+            defeated: false
         },
 
         "Yoda": {
@@ -26,7 +28,8 @@ $(document).ready(function () {
             health_points: 180,
             attack_power: 25,
             counter_attack_power: 25,
-            image: "/Users/vanessa/Rutgers/HOMEWORK_ASSIGNMENTS/hw-4-jquery/unit-4-game/assets/images/yoda2.jpg"
+            image: "/Users/vanessa/Rutgers/HOMEWORK_ASSIGNMENTS/hw-4-jquery/unit-4-game/assets/images/yoda2.jpg",
+            defeated: false
         },
 
         "Princess": {
@@ -34,12 +37,11 @@ $(document).ready(function () {
             health_points: 150,
             attack_power: 20,
             counter_attack_power: 20,
-            image: "/Users/vanessa/Rutgers/HOMEWORK_ASSIGNMENTS/hw-4-jquery/unit-4-game/assets/images/princess2.jpg"
+            image: "/Users/vanessa/Rutgers/HOMEWORK_ASSIGNMENTS/hw-4-jquery/unit-4-game/assets/images/princess2.jpg",
+            defeated: false
         }
 
     };
-    // var playerImg = $("<img alt='image' class='character-image'>").attr("src", characters["Darth Vadar"].image);
-    // $("#player").append(playerImg)
 
     // ------Global Variables --------- //
 
@@ -67,6 +69,8 @@ $(document).ready(function () {
 
 
     //-----initializer functions------ 
+
+
     // function will set the player selected values
     function initializePlayer(playerSelected) {
         console.log(playerSelected);
@@ -75,12 +79,13 @@ $(document).ready(function () {
                 name: playerSelected.name,
                 health_points: playerSelected.health_points,
                 attack_power: playerSelected.attack_power,
-                counter_attack_power: playerSelected.attack_power
+                counter_attack_power: playerSelected.attack_power,
+                defeated: false
             }
         };
-        console.log(newObject);
         return newObject;
     };
+
     // function will set the defender selected values
     function initializeDefender(defenderSelected) {
         console.log(defenderSelected);
@@ -89,10 +94,10 @@ $(document).ready(function () {
                 name: defenderSelected.name,
                 health_points: defenderSelected.health_points,
                 attack_power: defenderSelected.attack_power,
-                counter_attack_power: defenderSelected.attack_power
+                counter_attack_power: defenderSelected.attack_power,
+                defeated: false
             }
         };
-        console.log(newObject);
         return newObject;
     };
     // function will take players not selected and move them into defender selection section 
@@ -103,18 +108,19 @@ $(document).ready(function () {
         $("header").append('<p class="gameOver">You have no more health points</p>');
         $("header").append('<p class="gameOver">Game 0ver! Press Restart to try again!</p>');
         $("header").append('<button class="btn-outline-success rounded gameOver" id="restartBTN">Restart</button>');
+        $("#restartBTN").on("click", function() {
+            location.reload();
+        });
     };
 
     function reset() {
-        document.location.reload();
-        var playerSelected = false;
-        var defenderSelected = false;
-        player = {};
-        defender = {};
-        var defendersDefeated = 0;
-        var gameOver = false;
+        location.reload();
     }
 
+
+
+
+    // ------------------------on click finctions for each player-------------------------//
 
 
     // make a jQuery on click function for each of 4 players that determines if they are selected where all other players are moved
@@ -200,6 +206,9 @@ $(document).ready(function () {
         console.log("this is player" + player1.name);
     });
 
+
+    //-------------on click function and logic for attack button----------------------//
+
     $(".attack").on("click", function () {
         //created variable to target correct characters health caption, 
         //since id's are unique to the first letter of the players name + health targeted that with these variables
@@ -215,7 +224,6 @@ $(document).ready(function () {
             if (playerSelected && defenderSelected && !gameOver) {
                 defender.objectDefender.health_points = defender.objectDefender.health_points - player1.objectPlayer.counter_attack_power;
                 player1.objectPlayer.health_points = player1.objectPlayer.health_points - defender.objectDefender.counter_attack_power;
-
                 // update Health Points for defender and player
                 $("#" + phealth).text("Health: " + player1.objectPlayer.health_points);
                 $("#" + dhealth).text("Health: " + defender.objectDefender.health_points);
@@ -230,14 +238,18 @@ $(document).ready(function () {
             gameOverDisplay();
         }
 
-
-
-
+        if(defender.objectDefender.health_points <= 0) {
+            $("#playerConsole1").text("You defeated " + defender.objectDefender.name);
+            $("#defender").appendTo("footer");
+            $("")
+            $("#playerConsole2").text("The Force is strong with you select another enemy!");
+        }
 
     })
 
+
     $("#restartBTN").on("click", function() {
-        document.location.reload()
+        location.reload();
     });
 
 
