@@ -66,7 +66,7 @@ $(document).ready(function () {
 
     //---------------sounds --------------//
     // attack sound
-    var attMP3 = new Audio("/Users/vanessa/Rutgers/HOMEWORK_ASSIGNMENTS/hw-4-jquery/unit-4-game/assets/sounds/coolsaber.mp3");
+    var attMP3 = new Audio("../sounds/coolsaber.mp3");
     attMP3.volume = 0.2;
 
     // --------- code was done with mentor to catch error for unfullfilled promise with audio play
