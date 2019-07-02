@@ -63,30 +63,24 @@ $(document).ready(function () {
 
     // boolean for is the game over
     var gameOver = false;
-//---------------sounds --------------//
+
+    //---------------sounds --------------//
     // attack sound
     var attMP3 = new Audio("/Users/vanessa/Rutgers/HOMEWORK_ASSIGNMENTS/hw-4-jquery/unit-4-game/assets/sounds/coolsaber.mp3");
     attMP3.volume = 0.2;
-    // 
-   
+    
+    // --------- code was done with mentor to catch error for unfullfilled promise with audio play
     var themeMP3 = document.getElementById("themeMusic").play();
     themeMP3.volume = 0.2;
-    if(themeMP3 !== undefined) {
-        themeMP3.then(_=> {
-
-        }).catch(error=> {
-
+    if (themeMP3 !== undefined) {
+        themeMP3.then(_ => {
+        }).catch(error => {
         });
     }
-
+    // ------- attempted to lower theme volume currently playing at full level
     themeMP3.volume = 0.2;
 
-    // HTML variables
-
-
-
-    //-----initializer functions------ 
-
+    //-----initializer functions------// 
 
     // function will set the player selected values
     function initializePlayer(playerSelected) {
@@ -130,15 +124,21 @@ $(document).ready(function () {
         });
     };
 
+    function youWonDisplay() {
+        $("#charCont").appendTo(".defendersFought");
+        $("header").append('<img src="/Users/vanessa/Rutgers/HOMEWORK_ASSIGNMENTS/hw-4-jquery/unit-4-game/assets/images/you_won.gif">');
+        $("header").append('<p class="youWon">The force is stron with you!</p>');
+        $("header").append('<p class="youWon">You Won! Press Restart to play again!</p>');
+        $("header").append('<button class="btn-outline-success rounded gameOver" id="restartBTN">Restart</button>');
+        $("#restartBTN").on("click", function () {
+            location.reload();
+        });
+    };
+
     function reset() {
         location.reload();
     }
-
-
-
-
     // ------------------------on click finctions for each player-------------------------//
-
 
     // make a jQuery on click function for each of 4 players that determines if they are selected where all other players are moved
     //if no player/character has been selected this player/character will be 'your character' 
@@ -157,7 +157,6 @@ $(document).ready(function () {
             $("#darth").appendTo("#defender");
             $("#dHealth").text("Health: " + defender.objectDefender.health_points);
             defenderSelected = true;
-
         }
     });
 
@@ -170,14 +169,12 @@ $(document).ready(function () {
             $("#darth").appendTo("#enemies");
             $("#princess").appendTo("#enemies");
             playerSelected = true;
-        } else if (playerSelected === true && defenderSelected === false && player1.objectPlayer.name !== "Emperor") {
+        } else if (playerSelected && !defenderSelected && player1.objectPlayer.name !== "Emperor") {
             defender = initializeDefender(players.Emperor);
             $("#emperor").appendTo("#defender");
             $("#dHealth").text("Health: " + defender.objectDefender.health_points);
             defenderSelected = true;
         }
-        console.log("this is defender" + defender.name);
-        console.log("this is player" + player1.name);
     });
 
     $("#yoda").on("click", function () {
@@ -190,11 +187,10 @@ $(document).ready(function () {
             $("#princess").appendTo("#enemies");
             playerSelected = true;
             initializeDefender();
-        } else if (playerSelected === true && defenderSelected === false && player1.objectPlayer.name !== "Yoda") {
+        } else if (playerSelected && !defenderSelected && player1.objectPlayer.name !== "Yoda") {
             defender = initializeDefender(players.Yoda);
             $("#yoda").appendTo("#defender");
             $("#dHealth").text("Health: " + defender.objectDefender.health_points);
-
             defenderSelected = true;
         }
     });
@@ -216,8 +212,6 @@ $(document).ready(function () {
             defenderSelected = true;
         }
     });
-
-
     //-------------on click function and logic for attack button----------------------//
 
     $(".attack").on("click", function () {
@@ -246,14 +240,19 @@ $(document).ready(function () {
                 player1.objectPlayer.counter_attack_power += player1.objectPlayer.counter_attack_power;
             }
         }
-        // condition for player defeated 
+        // condition for player defeated Game Over
         if (player1.objectPlayer.health_points <= 0) {
             gameOver = true;
             gameOverDisplay();
         }
+        // condition for player won 
+        if (player1.objectPlayer.health_points >= 0 && defendersDefeated === 3) {
+            youWonDisplay();
+        }
         // condition for defender defeated
         if (defender.objectDefender.health_points <= 0) {
-            defenderSelected = false
+            defenderSelected = false;
+            defendersDefeated++;
             // update console
             $("#playerConsole1").text("You defeated " + defender.objectDefender.name);
             //loop through players object find matching object, update keys & values 
@@ -264,20 +263,15 @@ $(document).ready(function () {
                     console.log("condition hit");
                     //move this object back to enemies to attack 
                     $("#" + dname).appendTo("footer");
-                    //add defeated attr and disable click
-                    
                     // tell player to click on another defender
                     $("#playerConsole2").text("The Force is strong with you select another enemy!");
                 }
-                
             });
-           
         }
-
+//--------------restart game --------------------//
         $("#restartBTN").on("click", function () {
             location.reload();
         });
-
 
     });
 });

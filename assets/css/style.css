@@ -156,3 +156,9 @@ figcaption .figCapHealth {
 footer {
     display: none;
 }
+
+#themeMusic {
+    float: right;
+    width: 196px;
+}
+
