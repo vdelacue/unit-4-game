@@ -98,10 +98,15 @@ $(document).ready(function () {
     // function will take players not selected and move them into defender selection section 
     // and remove the selected defender into a non displayed class
     function gameOverDisplay() {
-        
+        $("#charCont").appendTo(".defendersFought");
+        $("header").append('<img src="/Users/vanessa/Rutgers/HOMEWORK_ASSIGNMENTS/hw-4-jquery/unit-4-game/assets/images/game_over_samuel.gif">');
+        $("header").append('<p class="gameOver">You have no more health points</p>');
+        $("header").append('<p class="gameOver">Game 0ver! Press Restart to try again!</p>');
+        $("header").append('<button class="btn-outline-success rounded gameOver" id="restartBTN">Restart</button>');
     };
 
     function reset() {
+        document.location.reload();
         var playerSelected = false;
         var defenderSelected = false;
         player = {};
@@ -116,7 +121,7 @@ $(document).ready(function () {
     //if no player/character has been selected this player/character will be 'your character' 
     //then run initialize function to define player variables // move remaining characters to `enemies available`
     $("#darth").on("click", function () {
-        if (playerSelected === false) {
+        if(playerSelected === false) {
             player1 = initializePlayer(players["Darth Vadar"]);
             $("#dHealth").text("Health: " + player1.objectPlayer.health_points);
             $("#darth").appendTo("#player");
@@ -124,7 +129,7 @@ $(document).ready(function () {
             $("#emperor").appendTo("#enemies");
             $("#princess").appendTo("#enemies");
             playerSelected = true;
-        } else if (playerSelected === true && defenderSelected === false && player1.objectPlayer.name !== "Vadar") {
+        } else if(playerSelected === true && defenderSelected === false && player1.objectPlayer.name !== "Vadar") {
             defender = initializeDefender(players["Darth Vadar"]);
             $("#darth").appendTo("#defender");
             $("#dHealth").text("Health: " + defender.objectDefender.health_points);
@@ -219,9 +224,10 @@ $(document).ready(function () {
                 $("#playerConsole2").text(defender.objectDefender.name + " attacked you back for " + defender.objectDefender.attack_power);
                 player1.objectPlayer.counter_attack_power += player1.objectPlayer.counter_attack_power;
             }
-        } else if(player1.objectPlayer.health_points <= 0) {
+        } 
+        if(player1.objectPlayer.health_points <= 0) {
             gameOver = true;
-
+            gameOverDisplay();
         }
 
 
@@ -230,7 +236,9 @@ $(document).ready(function () {
 
     })
 
-
+    $("#restartBTN").on("click", function() {
+        document.location.reload()
+    });
 
 
 });

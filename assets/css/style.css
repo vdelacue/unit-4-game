@@ -6,6 +6,7 @@
 
 .customfont {
     font-family: "My Custom Font", Verdana, Tahoma;
+    text-shadow: 2px 2px 3px green, 3px 3px 5px #8D1013;
 }
 
 /* used devtool in chrome to make background cover body and adust accordingly */
@@ -143,4 +144,11 @@ figcaption .figCapHealth {
 
 #playerConsole {
     margin-top: 10px;
+}
+
+.gameOver {
+    font-size: 33px;
+    font-family: "My Custom Font", Verdana, Tahoma;
+    text-shadow: 2px 2px 3px green, 3px 3px 5px #8D1013;
+
 }
