@@ -68,14 +68,12 @@ $(document).ready(function () {
     // attack sound
     var attMP3 = new Audio("/Users/vanessa/Rutgers/HOMEWORK_ASSIGNMENTS/hw-4-jquery/unit-4-game/assets/sounds/coolsaber.mp3");
     attMP3.volume = 0.2;
-    
+
     // --------- code was done with mentor to catch error for unfullfilled promise with audio play
     var themeMP3 = document.getElementById("themeMusic").play();
     themeMP3.volume = 0.2;
     if (themeMP3 !== undefined) {
-        themeMP3.then(_ => {
-        }).catch(error => {
-        });
+        themeMP3.then(_ => {}).catch(error => {});
     }
     // ------- attempted to lower theme volume currently playing at full level
     themeMP3.volume = 0.2;
@@ -84,7 +82,6 @@ $(document).ready(function () {
 
     // function will set the player selected values
     function initializePlayer(playerSelected) {
-        console.log(playerSelected);
         var newObject = {
             "objectPlayer": {
                 name: playerSelected.name,
@@ -99,7 +96,6 @@ $(document).ready(function () {
 
     // function will set the defender selected values
     function initializeDefender(defenderSelected) {
-        console.log(defenderSelected);
         var newObject = {
             "objectDefender": {
                 name: defenderSelected.name,
@@ -157,6 +153,7 @@ $(document).ready(function () {
             $("#darth").appendTo("#defender");
             $("#dHealth").text("Health: " + defender.objectDefender.health_points);
             defenderSelected = true;
+            $(".attack").attr("disabled", false);
         }
     });
 
@@ -174,6 +171,7 @@ $(document).ready(function () {
             $("#emperor").appendTo("#defender");
             $("#dHealth").text("Health: " + defender.objectDefender.health_points);
             defenderSelected = true;
+            $(".attack").attr("disabled", false);
         }
     });
 
@@ -186,12 +184,12 @@ $(document).ready(function () {
             $("#emperor").appendTo("#enemies");
             $("#princess").appendTo("#enemies");
             playerSelected = true;
-            initializeDefender();
         } else if (playerSelected && !defenderSelected && player1.objectPlayer.name !== "Yoda") {
             defender = initializeDefender(players.Yoda);
             $("#yoda").appendTo("#defender");
             $("#dHealth").text("Health: " + defender.objectDefender.health_points);
             defenderSelected = true;
+            $(".attack").attr("disabled", false);
         }
     });
 
@@ -210,6 +208,7 @@ $(document).ready(function () {
             $("#princess").appendTo("#defender");
             $("#dHealth").text("Health: " + defender.objectDefender.health_points);
             defenderSelected = true;
+            $(".attack").attr("disabled", false);
         }
     });
     //-------------on click function and logic for attack button----------------------//
@@ -253,14 +252,16 @@ $(document).ready(function () {
         if (defender.objectDefender.health_points <= 0) {
             defenderSelected = false;
             defendersDefeated++;
+            $(".attack").attr("disabled", true);
+            if (player1.objectPlayer.health_points >= 0 && defendersDefeated === 3) {
+                youWonDisplay();
+            }
             // update console
             $("#playerConsole1").text("You defeated " + defender.objectDefender.name);
             //loop through players object find matching object, update keys & values 
             var dname = defender.objectDefender.name.toLowerCase();
             Object.keys(players).forEach(function (item) {
-                console.log(players[item].name);
                 if (players[item].name === defender.objectDefender.name) {
-                    console.log("condition hit");
                     //move this object back to enemies to attack 
                     $("#" + dname).appendTo("footer");
                     // tell player to click on another defender
@@ -268,7 +269,7 @@ $(document).ready(function () {
                 }
             });
         }
-//--------------restart game --------------------//
+        //--------------restart game --------------------//
         $("#restartBTN").on("click", function () {
             location.reload();
         });
