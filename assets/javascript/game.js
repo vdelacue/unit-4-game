@@ -66,8 +66,14 @@ $(document).ready(function () {
 
     //---------------sounds --------------//
     // attack sound
-    var attMP3 = new Audio("../sounds/coolsaber.mp3");
-    attMP3.volume = 0.2;
+    // path of saber sound from repo folder is unit-4-game/assets/sounds/coolsaber.mp3 moving up a folder then into sounds then selecting sound should work but does not.
+       // attack sound
+       var attMP3 = new Audio("unit-4-game/assets/sounds/coolsaber.mp3");
+       attMP3.volume = 0.2;
+       if (attMP3 !== undefined) {
+           attMP3.then(_ => {}).catch(error => {});
+       };
+   
 
     // --------- code was done with mentor to catch error for unfullfilled promise with audio play
     var themeMP3 = document.getElementById("themeMusic").play();
@@ -215,6 +221,9 @@ $(document).ready(function () {
 
     $(".attack").on("click", function () {
         attMP3.play();
+        if (attMP3 !== undefined) {
+            attMP3.then(_ => {}).catch(error => {});
+        };
         //created variable to target correct characters health caption, 
         //since id's are unique to the first letter of the players name + health targeted that with these variables
         var phealth = player1.objectPlayer.name.charAt(0).toLowerCase() + "Health";
