@@ -234,7 +234,8 @@ $(document).ready(function () {
                 // update player console with attack results
                 $("#playerConsole1").text("You attacked " + defender.objectDefender.name + " for " + player1.objectPlayer.counter_attack_power + " damage.");
                 $("#playerConsole2").text(defender.objectDefender.name + " attacked you back for " + defender.objectDefender.attack_power);
-                player1.objectPlayer.counter_attack_power += playerSelected.attack_power;
+                $("#playerConsole3").text("“ In my experience there is no such thing as luck.” – Obi-Wan Kenobi.");
+                player1.objectPlayer.counter_attack_power += player1.objectPlayer.attack_power;
                 $("#" + phealth).text("Health: " + player1.objectPlayer.health_points);
                 $("#" + dhealth).text("Health: " + defender.objectDefender.health_points);
             }
