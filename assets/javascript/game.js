@@ -221,7 +221,12 @@ $(document).ready(function () {
     //-------------on click function and logic for attack button----------------------//
 
     $(".attack").on("click", function () {
-        attMP3.play();
+        var attMP3 = document.getElementById("attackSound").play();
+        attMP3.volume = 0.2;
+        if (attMP3 !== undefined) {
+            attMP3.then(_ => {}).catch(error => {});
+        };
+        // attMP3.play();
        
         //created variable to target correct characters health caption, 
         //since id's are unique to the first letter of the players name + health targeted that with these variables
