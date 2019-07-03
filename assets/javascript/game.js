@@ -8,8 +8,8 @@ $(document).ready(function () {
         "Darth Vadar": {
             name: "Darth",
             health_points: 100,
-            attack_power: 5,
-            counter_attack_power: 5,
+            attack_power: 20,
+            counter_attack_power: 20,
             image: "/Users/vanessa/Rutgers/HOMEWORK_ASSIGNMENTS/hw-4-jquery/unit-4-game/assets/images/darth2.jpg",
             defeated: false
         },
@@ -17,8 +17,8 @@ $(document).ready(function () {
         "Emperor": {
             name: "Emperor",
             health_points: 120,
-            attack_power: 8,
-            counter_attack_power: 8,
+            attack_power: 10,
+            counter_attack_power: 10,
             image: "/Users/vanessa/Rutgers/HOMEWORK_ASSIGNMENTS/hw-4-jquery/unit-4-game/assets/images/emperor2.jpg",
             defeated: false
         },
@@ -26,8 +26,8 @@ $(document).ready(function () {
         "Yoda": {
             name: "Yoda",
             health_points: 180,
-            attack_power: 25,
-            counter_attack_power: 25,
+            attack_power: 5,
+            counter_attack_power: 5,
             image: "/Users/vanessa/Rutgers/HOMEWORK_ASSIGNMENTS/hw-4-jquery/unit-4-game/assets/images/yoda2.jpg",
             defeated: false
         },
