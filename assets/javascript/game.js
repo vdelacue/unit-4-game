@@ -234,7 +234,7 @@ $(document).ready(function () {
                 // update player console with attack results
                 $("#playerConsole1").text("You attacked " + defender.objectDefender.name + " for " + player1.objectPlayer.counter_attack_power + " damage.");
                 $("#playerConsole2").text(defender.objectDefender.name + " attacked you back for " + defender.objectDefender.attack_power);
-                player1.objectPlayer.counter_attack_power += player1.objectPlayer.counter_attack_power;
+                player1.objectPlayer.counter_attack_power += playerSelected.attack_power;
                 $("#" + phealth).text("Health: " + player1.objectPlayer.health_points);
                 $("#" + dhealth).text("Health: " + defender.objectDefender.health_points);
             }
@@ -258,6 +258,7 @@ $(document).ready(function () {
             }
             // update console
             $("#playerConsole1").text("You defeated " + defender.objectDefender.name);
+            $("#playerConsole3").text("You now have " + player1.objectPlayer.counter_attack_power + " damage.");
             //loop through players object find matching object, update keys & values 
             var dname = defender.objectDefender.name.toLowerCase();
             Object.keys(players).forEach(function (item) {
@@ -266,6 +267,7 @@ $(document).ready(function () {
                     $("#" + dname).appendTo("footer");
                     // tell player to click on another defender
                     $("#playerConsole2").text("The Force is strong with you select another enemy!");
+                    $("#playerConsole3").text("You now have " + player1.objectPlayer.counter_attack_power + " damage.");
                 }
             });
         }
