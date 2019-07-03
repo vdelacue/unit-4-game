@@ -10,7 +10,7 @@ $(document).ready(function () {
             health_points: 100,
             attack_power: 5,
             counter_attack_power: 5,
-            image: "/Users/vanessa/Rutgers/HOMEWORK_ASSIGNMENTS/hw-4-jquery/unit-4-game/assets/images/darth2.jpg",
+            image: "../images/darth2.jpg",
             defeated: false
         },
 
@@ -19,7 +19,7 @@ $(document).ready(function () {
             health_points: 120,
             attack_power: 8,
             counter_attack_power: 8,
-            image: "/Users/vanessa/Rutgers/HOMEWORK_ASSIGNMENTS/hw-4-jquery/unit-4-game/assets/images/emperor2.jpg",
+            image: "../images/emperor2.jpg",
             defeated: false
         },
 
@@ -28,7 +28,7 @@ $(document).ready(function () {
             health_points: 180,
             attack_power: 25,
             counter_attack_power: 25,
-            image: "/Users/vanessa/Rutgers/HOMEWORK_ASSIGNMENTS/hw-4-jquery/unit-4-game/assets/images/yoda2.jpg",
+            image: "../images/yoda2.jpg",
             defeated: false
         },
 
@@ -37,7 +37,7 @@ $(document).ready(function () {
             health_points: 150,
             attack_power: 20,
             counter_attack_power: 20,
-            image: "/Users/vanessa/Rutgers/HOMEWORK_ASSIGNMENTS/hw-4-jquery/unit-4-game/assets/images/princess2.jpg",
+            image: "../images/princess2.jpg",
             defeated: false
         }
 
@@ -66,7 +66,7 @@ $(document).ready(function () {
 
     //---------------sounds --------------//
     // attack sound
-    var attMP3 = new Audio("assets/sounds/coolsaber.mp3");
+    var attMP3 = new Audio("../sounds/coolsaber.mp3");
     attMP3.volume = 0.2;
 
     // --------- code was done with mentor to catch error for unfullfilled promise with audio play
