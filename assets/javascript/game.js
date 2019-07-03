@@ -169,7 +169,7 @@ $(document).ready(function () {
         } else if (playerSelected && !defenderSelected && player1.objectPlayer.name !== "Emperor") {
             defender = initializeDefender(players.Emperor);
             $("#emperor").appendTo("#defender");
-            $("#dHealth").text("Health: " + defender.objectDefender.health_points);
+            $("#eHealth").text("Health: " + defender.objectDefender.health_points);
             defenderSelected = true;
             $(".attack").attr("disabled", false);
         }
@@ -187,7 +187,7 @@ $(document).ready(function () {
         } else if (playerSelected && !defenderSelected && player1.objectPlayer.name !== "Yoda") {
             defender = initializeDefender(players.Yoda);
             $("#yoda").appendTo("#defender");
-            $("#dHealth").text("Health: " + defender.objectDefender.health_points);
+            $("#yHealth").text("Health: " + defender.objectDefender.health_points);
             defenderSelected = true;
             $(".attack").attr("disabled", false);
         }
@@ -206,7 +206,7 @@ $(document).ready(function () {
         } else if (playerSelected === true && defenderSelected === false && player1.objectPlayer.name !== "Princess") {
             defender = initializeDefender(players.Princess);
             $("#princess").appendTo("#defender");
-            $("#dHealth").text("Health: " + defender.objectDefender.health_points);
+            $("#pHealth").text("Health: " + defender.objectDefender.health_points);
             defenderSelected = true;
             $(".attack").attr("disabled", false);
         }
@@ -219,9 +219,7 @@ $(document).ready(function () {
         //since id's are unique to the first letter of the players name + health targeted that with these variables
         var phealth = player1.objectPlayer.name.charAt(0).toLowerCase() + "Health";
         var dhealth = defender.objectDefender.name.charAt(0).toLowerCase() + "Health";
-        var newDHealth = 0;
-        var newPHealth = 0;
-        var newCounterAttack = player1.objectPlayer.counter_attack_power;
+        
         $("#" + phealth).text("Health: " + player1.objectPlayer.health_points);
         $("#" + dhealth).text("Health: " + defender.objectDefender.health_points);
 
@@ -237,6 +235,8 @@ $(document).ready(function () {
                 $("#playerConsole1").text("You attacked " + defender.objectDefender.name + " for " + player1.objectPlayer.counter_attack_power + " damage.");
                 $("#playerConsole2").text(defender.objectDefender.name + " attacked you back for " + defender.objectDefender.attack_power);
                 player1.objectPlayer.counter_attack_power += player1.objectPlayer.counter_attack_power;
+                $("#" + phealth).text("Health: " + player1.objectPlayer.health_points);
+                $("#" + dhealth).text("Health: " + defender.objectDefender.health_points);
             }
         }
         // condition for player defeated Game Over
