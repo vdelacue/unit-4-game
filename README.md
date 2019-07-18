@@ -1,5 +1,6 @@
 
 # Play the game by clicking on this link [Star Wars RPG](http://delacue.com/unit-4-game/) #
+![alt text](assets/images/starwarsGame.png "Screen capture Image")
 
  Here's how the Game works:
 
